@@ -1,0 +1,113 @@
+.logo {
+    height: 120px;
+}
+
+
+header {
+    background-color:rgb(255, 255, 255);
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    font-size: large;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 120px;
+}
+
+.Searchbar{
+  position: absolute;
+  top: 20px;
+  left: 460px;
+  width: 100%;  
+}
+
+.Searchbar input{
+    width: 52%;
+    height: 50px;  
+    font-size: 15px;
+    padding-left: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar1{
+    position: absolute;
+    top: 80px;
+    left: 410px;
+}
+
+.navbar1 li{
+    display: inline;
+    padding: 20px;
+}
+
+.navbar2{
+    position: absolute;
+    top: 30px;
+    right: 40px;
+}
+.navbar2 li{
+    display: inline;
+    padding: 10px;
+}
+
+.button-post-ad{
+    background-color: #006340;
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.button-view-listing{
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 5px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: absolute;
+    top:65%;
+    left: 13%;
+}
+
+
+a{
+    color: black;
+}
+
+.promo{
+    background-color: #2e2e2e;
+    height: 33%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 120px;
+}
+
+h1{
+    position: absolute;
+    top: 20%;
+    left: 13%;
+    color: white;
+    font-size: 50px;
+}
+
+h2{
+    position: absolute;
+    left: 13%;
+    top: 45%;
+    color: white;
+    font-size: 30px;
+}
