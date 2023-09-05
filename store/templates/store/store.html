@@ -24,7 +24,8 @@
                 <div class="product-card">
                     <div class="product-image">
                         <img src = "{{product.imageURL}}" class="product-thumb">
-                        <button data-product = {{product.id}} data-action="add" class = "card-btn add-btn update-cart">add to cart</button>
+                        <a class="view-btn" href="{% url 'productview' %}" >view</a>
+                        <button data-product = {{product.id}} data-action="add" class = "add-cart-btn add-btn update-cart">add to cart</button>
                     </div>
                     <div class = "product-info">
                         <h3 class = "product-brand">{{product.name}}</h3>

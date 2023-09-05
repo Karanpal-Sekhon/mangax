@@ -67,7 +67,7 @@ body {
 #cart-total{
   position: relative;
   top: -60px;
-  left: 240px;
+  left: 250px;
 	text-align: center;
 	color:#fff;
 	background-color: red;
@@ -209,7 +209,7 @@ h2{
   object-fit: cover;
 }
 
-.card-btn{
+.add-cart-btn{
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -226,12 +226,40 @@ h2{
   opacity: 0;
 }
 
-.product-card:hover .card-btn{
+.view-btn{
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform:  translateX(-50%);
+  padding: 10px;
+  width: 90%;
+  text-transform: capitalize;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: #fff;
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.product-card:hover .view-btn{
+  text-decoration: none;
   opacity: 1;
 }
 
-.card-btn:hover {
+.product-card:hover .add-cart-btn{
+  opacity: 1;
+}
+
+.add-cart-btn:hover {
   background: #006340;
+  color: #fff;
+}
+
+.view-btn:hover{
+  background: #2e2e2e;
   color: #fff;
 }
 
