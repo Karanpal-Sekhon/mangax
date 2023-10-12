@@ -74,14 +74,6 @@ def productview(request):
     return render(request, 'store/productview.html', context)
 
 
-def login(request):
-    context = {}
-    return render(request, "store/login.html", context)
-
-def signup(request):
-    context = {}
-    return render(request, 'store/signup.html', context)
-
 
 def updateItem(request):
     # data = json.loads(request.body)

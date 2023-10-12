@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 {% load static %}
 <html lang="en" >
 <head>
@@ -50,4 +50,10 @@
   <script type="text/javascript" src="{% static 'js/signup.js' %}" ></script>
 
 </body>
-</html>
+</html> -->
+{% load static %}
+<form action="" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type = "submit">Register</button>
+</form>
