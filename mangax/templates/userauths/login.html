@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel = "stylesheet" type = "text/css" href="{% static 'css/login.css' %}">
+
+</head>
+<body>
+<div class="logo text-center">
+  <a href = "{% url 'store' %}"><img src = "{% static  'images/login_logo.PNG' %}" class="img-logo"></a>
+</div>
+<div class="wrapper">
+  <div class="inner-warpper text-center">
+    <h2 class="title">Login</h2>
+    <form action="" id="formvalidate">
+      <div class="input-group">
+        <label class="placeholder" for="userName">User Name</label>
+        <input class="form-control" name="userName" id="userName" type="text" placeholder="" />
+        <span class="lighting"></span>
+      </div>
+      <div class="input-group">
+        <label class="placeholder" for="userPassword">Password</label>
+        <input class="form-control" name="userPassword" id="userPassword" type="password" placeholder="" />
+        <span class="lighting"></span>
+      </div>
+
+      <button type="submit" id="login">Login</button>
+      <div class="clearfix supporter">
+        <div class="pull-left remember-me">
+          <input id="rememberMe" type="checkbox">
+          <label for="rememberMe">Remember Me</label>
+        </div>
+        <a class="forgot pull-right" href="#">Forgot Password?</a>
+      </div>
+    </form>
+  </div>
+  <div class="signup-wrapper text-center">
+    <a href="{% url 'signup' %}">Don't have an accout? <span class="text-primary">Create One</span></a>
+  </div>
+</div>
+
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js'></script>
+  <script type="text/javascript" src="{% static 'js/login.js' %}" ></script>
+
+</body>
+</html>

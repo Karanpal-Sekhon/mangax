@@ -1,0 +1,41 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <div class = "promo">
+        <h1><strong>New Additions!</strong></h1>
+        <h2><strong>Arrivals for August</strong></h2>
+        <a  class="btn btn-light btn-lg" id="view-listing-link" href = "#"><strong>View Listings</strong></a>
+        <img class = "slideshow" src = "{% static  'images/newmanga.png' %}">
+    </div>
+
+
+
+    <div class="recommended">
+        <h3 id="white-background">Recommended for you:</h3>
+        <button class = "pre-btn"><img src = "{% static 'images/arrow.png' %}"></button>
+        <button class = "nxt-btn"><img src = "{% static 'images/arrow.png' %}"></button>
+
+        <div class="product">
+            <div class="product-container">
+                {% for product in products %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src = "{{product.imageURL}}" class="product-thumb">
+                        <a class="view-btn" href="{% url 'productview' %}" >view</a>
+                        <button data-product = {{product.id}} data-action="add" class = "add-cart-btn add-btn update-cart">add to cart</button>
+                    </div>
+                    <div class = "product-info">
+                        <h3 class = "product-brand">{{product.name}}</h3>
+                        <span class = "price">{{product.price|floatformat:2}}$</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %} 
