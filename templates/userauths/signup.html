@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en" >
 <head>
@@ -16,31 +16,48 @@
 <div class="wrapper">
   <div class="inner-warpper text-center">
     <h2 class="title">Sign Up</h2>
-    <form action="" id="formvalidate">
+
+    <form action="" method="POST" id="formvalidate">
+      {% csrf_token %}
       <div class="input-group">
-        <label class="placeholder" for="Email">Email</label>
-        <input class="form-control" name="userEmail" id="userEmail" type="text" placeholder="" />
+        <!-- <label class="placeholder" for="Email">Email</label> -->
+        {{form.email}}
+        <!-- <input class="form-control" name="userEmail" id="userEmail" type="text" placeholder="" /> -->
         <span class="lighting"></span>
       </div>
       <div class="input-group">
-        <label class="placeholder" for="userName">Username</label>
-        <input class="form-control" name="userName" id="userName" type="text" placeholder="" />
+        <!-- <label class="placeholder" for="Email">Email</label> -->
+        {{form.username}}
+        <!-- <input class="form-control" name="userEmail" id="userEmail" type="text" placeholder="" /> -->
+        <span class="lighting"></span>
+      </div>
+      <div class="input-group">
+        <!-- <label class="placeholder" for="userName">Username</label> -->
+        {{form.password1}}
         <span class="lighting"></span>
       </div>
 
       <div class="input-group">
-        <label class="placeholder" for="userPassword">Password</label>
-        <input class="form-control" name="userPassword" id="userPassword" type="password" placeholder="" />
+        <!-- <label class="placeholder" for="userPassword">Password</label> -->
+        {{form.password2}}
         <span class="lighting"></span>
       </div>
 
-      <button type="submit" id="login">Sign Up</button>
+      <button type="submit">Sign Up</button>
       <div class="clearfix supporter">
         <div class="pull-left remember-me">
           <input id="rememberMe" type="checkbox">
           <label for="rememberMe">Remember Me</label>
         </div>
       </div>
+
+
+      {% if form.errors %}
+      <div class = "error">
+        <strong>{{form.errors}}</strong>
+      </div>
+      {% endif %}
+
     </form>
   </div>
 </div>
@@ -50,10 +67,12 @@
   <script type="text/javascript" src="{% static 'js/signup.js' %}" ></script>
 
 </body>
-</html> -->
+</html>
+
+<!-- 
 {% load static %}
 <form action="" method="POST">
   {% csrf_token %}
   {{form.as_p}}
   <button type = "submit">Register</button>
-</form>
+</form> -->

@@ -218,3 +218,11 @@ span.validate-tooltip {
     position: static;
   }
 }
+
+.error{
+  margin-top: 20px;
+  margin-bottom: -20px;
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
