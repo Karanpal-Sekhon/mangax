@@ -14,27 +14,85 @@
 
 
     <div class="recommended">
-        <h3 id="white-background">Recommended for you:</h3>
+        <h3 id="white-background">Featured:</h3>
         <button class = "pre-btn"><img src = "{% static 'images/arrow.png' %}"></button>
         <button class = "nxt-btn"><img src = "{% static 'images/arrow.png' %}"></button>
 
         <div class="product">
             <div class="product-container">
                 {% for product in products %}
+                {% if product.featured %}
                 <div class="product-card">
                     <div class="product-image">
-                        <img src = "{{product.imageURL}}" class="product-thumb">
-                        <a class="view-btn" href="{% url 'productview' %}" >view</a>
-                        <button data-product = {{product.id}} data-action="add" class = "add-cart-btn add-btn update-cart">add to cart</button>
+                        <img src = "{{product.image.url}}" class="product-thumb">
+                        <a class="view-btn" href="{% url 'product' pid=product.pid %}" >view</a>
+                        <button class = "add-cart-btn add-btn update-cart">add to cart</button>
                     </div>
                     <div class = "product-info">
-                        <h3 class = "product-brand">{{product.name}}</h3>
-                        <span class = "price">{{product.price|floatformat:2}}$</span>
+                        <h3 class = "product-brand">{{product.title}}</h3>
+                        <span class = "price">{{product.price}}$</span>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
+
+
+        <div class="recommended">
+            <h3 id="white-background">Shonen:</h3>
+            <button class = "pre-btn"><img src = "{% static 'images/arrow.png' %}"></button>
+            <button class = "nxt-btn"><img src = "{% static 'images/arrow.png' %}"></button>
+    
+            <div class="product">
+                <div class="product-container">
+                    {% for product in products %}
+                    {% if product.category.title == "Shonen" %}
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src = "{{product.image.url}}" class="product-thumb">
+                            <a class="view-btn" href="{% url 'product' pid=product.pid %}" >view</a>
+                            <button class = "add-cart-btn add-btn update-cart">add to cart</button>
+                        </div>
+                        <div class = "product-info">
+                            <h3 class = "product-brand">{{product.title}}</h3>
+                            <span class = "price">{{product.price}}$</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+            <div class="recommended">
+                <h3 id="white-background">Seinen:</h3>
+                <button class = "pre-btn"><img src = "{% static 'images/arrow.png' %}"></button>
+                <button class = "nxt-btn"><img src = "{% static 'images/arrow.png' %}"></button>
+        
+                <div class="product">
+                    <div class="product-container">
+                        {% for product in products %}
+                        {% if product.category.title == "Seinen" %}
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src = "{{product.image.url}}" class="product-thumb">
+                                <a class="view-btn" href="{% url 'product' pid=product.pid %}" >view</a>
+                                <button class = "add-cart-btn add-btn update-cart">add to cart</button>
+                            </div>
+                            <div class = "product-info">
+                                <h3 class = "product-brand">{{product.title}}</h3>
+                                <span class = "price">{{product.price}}$</span>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>    
     </div>
 
 

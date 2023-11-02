@@ -1,11 +1,11 @@
 TODO:
 
-
-1. implement signup ui
-2. create login logic and corresponding ui
-3. create productview page
-4. add buyer pov
-	a. add add posting logic
+1. implement signup ui DONE
+2. create login logic and corresponding ui DONE
+3. create productview page DONE
+4. add user povs
+	a. account page DONE
 	b. add add posting ui
-	c. add payment processing for ad deployment
+	c. add add posting logic
+	d. add payment processing for ad deployment
 5. add chat system between buyer and seller

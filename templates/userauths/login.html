@@ -16,15 +16,16 @@
 <div class="wrapper">
   <div class="inner-warpper text-center">
     <h2 class="title">Login</h2>
-    <form action="" id="formvalidate">
+    <form action="" method = "POST" id="formvalidate">
+      {% csrf_token %}
       <div class="input-group">
-        <label class="placeholder" for="userName">User Name</label>
-        <input class="form-control" name="userName" id="userName" type="text" placeholder="" />
+        <label class="placeholder" for="Email">Email</label>
+        <input class="form-control" required name="email" id="userEmail" type="text" placeholder="" style="font-family: satoshi;"/>
         <span class="lighting"></span>
       </div>
       <div class="input-group">
         <label class="placeholder" for="userPassword">Password</label>
-        <input class="form-control" name="userPassword" id="userPassword" type="password" placeholder="" />
+        <input class="form-control" required name="password" id="userPassword" type="password" placeholder="" />
         <span class="lighting"></span>
       </div>
 
@@ -39,7 +40,7 @@
     </form>
   </div>
   <div class="signup-wrapper text-center">
-    <a href="{% url 'signup' %}">Don't have an accout? <span class="text-primary">Create One</span></a>
+    <a href="{% url 'userauths:signup' %}">Don't have an accout? <span class="text-primary">Create One</span></a>
   </div>
 </div>
 

@@ -1,0 +1,5 @@
+Minor Pieces of functionality that need to be implemented
+
+1. Mulitple image sliders (make the css better) (main page )(2)
+2. Category Links (1)
+2. image slideshow for each product (productview page) (2)

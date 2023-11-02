@@ -50,11 +50,9 @@
     <div class = "navbar1">
       <nav>
         <ul>
-          <li><a href = "#"><strong>Buy and Sell</strong></a></li>
-          <li><a href = "#"><strong>Button</strong></a></li>
-          <li><a href = "#"><strong>Button</strong></a></li>
-          <li><a href = "#"><strong>Button</strong></a></li>
-          <li><a href = "#"><strong>Button</strong></a></li>
+          {% for c in categories %}
+          <li><a href = "#"><strong>{{c.title}}</strong></a></li>
+          {% endfor %}
         </ul>
       </nav>
     </div>
@@ -62,26 +60,29 @@
     <div class = "navbar2">
       <nav>
         <ul>
-          <li><a href="#"><strong>Login</strong></a></li> 
+          {% if user.is_authenticated %}
+            <li><a href = "{% url 'userauths:account_view' %}"><strong>Account</strong></a></li>
+            <li><a href="{% url 'userauths:logout' %}"><strong>Logout</strong></a></li>
+          {% else %}
+          <li><a href="{% url 'userauths:login' %}"><strong>Login</strong></a></li>
           <li><a href="{% url 'userauths:signup' %}"><strong>Sign Up</strong></a></li>
+          {% endif %}
           <li><a href="{% url 'cart' %}"><img id="cart-icon" src="{% static 'images/cart.png' %}"></a></li>
           <li><a href="#" class="btn btn-success">Post Ad</a></li>
         </ul>
-        <p id = "cart-total">{{cartItems}}</p>
+        <!-- <p id = "cart-total">{{cartItems}}</p> -->
       </nav>
     </div>
 
   </header>
   <!----------------------------Product Slider--------------------------------->
 
+  <div class = "container">
+      {% block content %}
 
-    <div class = "container">
-        <br>
-        {% block content %}
-
-        {% endblock content %}
-    </div>
-
+      {% endblock content %}
+  </div>
+  
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -1,27 +1,40 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse # returns message
 from .models import *
-import json
+from store.models import Product, CartOrder, CartOrderItems, Category, Address, WishList, ProductImages
+
 # Create your views here.
 
 def store(request):
-    # if request.user.is_authenticated:
-    #     customer = request.user.customer
-    #     order, created = Order.objects.get_or_create(customer=customer, complete=False) # creating object or querying one
-    #     items = order.orderitem_set.all()
-    #     cartItems = order.get_cart_items
-    # else:
-    #     items = []
-    #     order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
-    #     cartItems = order['get_cart_items']
+    product = Product.objects.all().order_by("-id")
+    categories = Category.objects.all()
+
+    context = {
+        "products": product,
+        "categories": categories
+    }
 
 
-    products = Product.objects.all()
-    #context = {'products': products, 'cartItems': cartItems}
-
-
-    context = {'products': products}
+    # context = {'products': products}
     return render(request, 'store/store.html', context)
+
+
+
+
+def product_detail(request, pid):
+    product = Product.objects.get(pid = pid)
+    # product = get_object_or_404(Product, )
+
+    context = {
+        "product" : product
+    }
+
+    return render(request, "store/productview.html", context)
+
+
+    
+
+
 
     
 def cart(request):
@@ -58,20 +71,6 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 
-def productview(request):
-    # if request.user.is_authenticated:
-    #     customer = request.user.customer
-    #     order, created = Order.objects.get_or_create(customer=customer, complete=False) # creating object or querying one
-    #     items = order.orderitem_set.all()
-    #     cartItems = order.get_cart_items
-    # else:
-    #     items = []
-    #     order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
-    #     cartItems = order['get_cart_items']
-    # context = {"items":items, "order": order, 'cartItems': cartItems}
-
-    context = {}
-    return render(request, 'store/productview.html', context)
 
 
 

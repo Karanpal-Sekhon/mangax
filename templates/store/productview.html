@@ -3,6 +3,35 @@
 
 {% block content %}
 
-<h2>Product view page</h2>
+<!-- Left Column / Headphones Image -->
+
+<link rel = "stylesheet" type = "text/css" href="{% static 'css/productview.css' %}">
+<div class="left-column">
+    <img src = "{{product.image.url}}">
+</div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>{{product.category}}</span>
+      <h1>{{product.title}}</h1>
+      <p>{{product.description}}</p>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+    </div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>{{product.price}}$</span>
+      <a href="#" class="cart-btn">Add to cart</a>
+      <a href="#" class="cart-btn", style="margin-left: 10px;">Add to Wishlist</a>
+    </div>
+  </div>
+</div>
 
 {% endblock content %} 
