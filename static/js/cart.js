@@ -1,42 +1,41 @@
-var updateBtns = document.getElementsByClassName('update-cart')
+$(".add-cart-btn").on("click", function() {
 
-for (var i = 0; i < updateBtns.length; i++){
-    updateBtns[i].addEventListener('click', function(){
-        var productId = this.dataset.product
-        var action = this.dataset.action
-        console.log('productId:', productId, "Action:", action)
+    // let productCard = $(this).closest(".product-card");
+    let product_pid = $(this).data("pid");
+    let product_title = $(this).data("title");
+    let product_price = $(this).data("price");
+    let product_image = $(this).data("image");
 
-        console.log("USER:", user)
-        if (user == "AnonymousUser"){
-            console.log("Not logged in")
-        } else {
-            updateUserOrder(productId, action)
-        }
-    })  // listen for a click, what do when click
-}
-
-
-
-function updateUserOrder(productId, action){
-    console.log('User is logged in, sending data')
-
-    var url = '/update_item/' // url we send data to
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type':'application/json',
-            'X-CSRFToken': csrftoken,
-    },
-        body:JSON.stringify({'productId': productId, 'action': action})
-    })
     
-    .then((response) =>{
-        return response.json()
-    })
+    let this_val = $(this);
 
-    .then((data) => {
-        console.log('data:', data)
-        location.reload()  
+    console.log("Product Title:", product_title);
+    console.log("Product pid:", product_pid);
+    console.log("Product Price:", product_price);
+    console.log("Current Element:", this_val);
+    console.log("Product Image:", product_image)
+
+    $.ajax({
+        url : '/add-to-cart',
+        data: {
+            'pid' : product_pid,
+            'title': product_title,
+            'price': product_price,
+            'image': product_image
+        },
+
+        dataType: 'json',
+        beforeSend: function(){
+            console.log("Adding product to cart")
+        },
+        success: function(res){
+            this_val.html("✔ Item added to cart!")
+            console.log("Added product to cart")
+            // $(".cart-items.count").text(response.totalcartitems)
+
+            setTimeout(function() {
+                this_val.html("Add to Cart");
+            }, 1000); // Adjust the delay duration as needed
+        }
     })
-}
+});

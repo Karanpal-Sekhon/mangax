@@ -56,26 +56,17 @@
 				<hr>
 				<h3>Order Summary</h3>
 				<hr>
-                {% for item in items %}
+                {% for pid, item in request.session.cart_data_obj.items %}
 				<div class="cart-row">
-					<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
-					<div style="flex:2"><p>{{item.product.name}}</p></div>
-					<div style="flex:1"><p>${{item.product.price}}</p></div>
-					<div style="flex:1"><p>x{{item.quantity}}</p></div>
+					<div style="flex:2"><img class="row-image" src="{{item.image}}"></div>
+					<div style="flex:2"><p>{{item.title}}</p></div>
+					<div style="flex:1"><p>${{item.price}}</p></div>
 				</div>
                 {%endfor%}
-				<h5>Items:   {{order.get_cart_items}}</h5>
-				<h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
+				<h5>Items:   {{item_total}}</h5>
+				<h5>Total:   ${{price_total|floatformat:2}}</h5>
         </div>
     </div>
 </div>
-
-<script type = "text/javascript">
-    var shipping = "{{order.shipping}}"
-
-    if (shipping == 'False'){
-        document.getElementById('shipping-info').innerHTML = ''
-    }
-</script>
 
 {% endblock content %}

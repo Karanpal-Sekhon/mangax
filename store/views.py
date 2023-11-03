@@ -32,72 +32,63 @@ def product_detail(request, pid):
     return render(request, "store/productview.html", context)
 
 
-    
 
+    
+def add_to_cart(request):
+    cart_product = {}
+    cart_product[str(request.GET['pid'])] = {
+        'title': request.GET['title'],
+        'price': request.GET['price'],
+        'image': request.GET['image']
+    }
+
+    if 'cart_data_obj' in request.session:
+        cart_data = request.session['cart_data_obj']
+        cart_data.update(cart_product)
+        request.session['cart_data_obj'] = cart_data
+
+    else:
+        request.session['cart_data_obj'] = cart_product
+    
+    return JsonResponse({"data": request.session['cart_data_obj'], "total_cart_items": len(request.session['cart_data_obj'])})
+
+
+
+def get_cart_total(request):
+    total = 0
+    count = 0
+    if 'cart_data_obj' in request.session:
+        cart_data = request.session['cart_data_obj']
+        for product_id, product_info in cart_data.items():
+            count+=1
+            total += float(product_info['price'])  # Convert price to a float and add to the total
+        return total, count
+    else:
+        return total, count
 
 
     
 def cart(request):
 
-    # if request.user.is_authenticated:
-    #     customer = request.user.customer
-    #     order, created = Order.objects.get_or_create(customer=customer, complete=False) # creating object or querying one
-    #     items = order.orderitem_set.all()
-    #     cartItems = order.get_cart_items
-    # else:
-    #     items = []
-    #     order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
-    #     cartItems = order['get_cart_items']
-    # context = {"items":items, "order": order, 'cartItems': cartItems}
 
-    context = {}
+    
+    price_total, item_total = get_cart_total(request)
+
+    context = {
+        "price_total": price_total,
+        "item_total": item_total
+    }
     return render(request, 'store/cart.html', context)
 
     
 def checkout(request):
-    # if request.user.is_authenticated:
-    #     customer = request.user.customer
-    #     order, created = Order.objects.get_or_create(customer=customer, complete=False) # creating object or querying one
-    #     items = order.orderitem_set.all()
-    #     cartItems = order.get_cart_items
-    # else:
-    #     items = []
-    #     order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
-    #     cartItems = order['get_cart_items']
-    # context = {"items":items, "order": order, 'cartItems': cartItems}
+    price_total, item_total = get_cart_total(request)
 
-    context = {}
+    context = {
+        "price_total": price_total,
+        "item_total": item_total
+    }
 
     return render(request, 'store/checkout.html', context)
 
 
-
-
-
-def updateItem(request):
-    # data = json.loads(request.body)
-    # productId = data["productId"]
-    # action = data["action"]
-
-    # print("Action:", action)
-    # print("ProductId:", productId )
-
-
-    # customer = request.user.customer
-    # product = Product.objects.get(id=productId)
-    # order, created = Order.objects.get_or_create(customer=customer, complete=False) # creating object or querying one
-
-    # orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
-
-    # if action == 'add':
-    #     orderItem.quantity +=1
-    # elif action == 'remove':
-    #     orderItem.quantity -=1
-
-    # orderItem.save()
-
-    # if orderItem.quantity <=0:
-    #     orderItem.delete()
-
-
-    return JsonResponse("Item was added", safe = False) # response

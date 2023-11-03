@@ -8,4 +8,4 @@ TODO:
 	b. add add posting ui
 	c. add add posting logic
 	d. add payment processing for ad deployment
-5. add chat system between buyer and seller
+

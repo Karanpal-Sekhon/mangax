@@ -15,10 +15,11 @@ html, body {
 
   /* Columns */
 .left-column {
-    margin-left: 100px;
-    margin-top: 300px;
+    /* margin-left: 80px; */
+    margin-top: 320px;
     width: 50%;
     position: relative;
+    margin-left: -100px;
     /* background-color: #5E6977; */
   }
 
@@ -29,8 +30,9 @@ html, body {
   }
    
   .right-column {
+    /* margin-left: 50px; */
     width: 35%;
-    margin-top: 300px;
+    margin-top: 380px;
   }
 
   /* Left Column */
@@ -48,7 +50,7 @@ html, body {
     text-decoration: none;
   }
   .product-description h1 {
-    margin-left: 100px;
+    /* margin-left: 100px; */
     font-weight: 300;
     font-size: 52px;
     color: #43484D;

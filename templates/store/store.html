@@ -25,8 +25,9 @@
                 <div class="product-card">
                     <div class="product-image">
                         <img src = "{{product.image.url}}" class="product-thumb">
-                        <a class="view-btn" href="{% url 'product' pid=product.pid %}" >view</a>
-                        <button class = "add-cart-btn add-btn update-cart">add to cart</button>
+                        <a class="view-btn" href="{% url 'product' product.pid %}" >view</a>
+                        <button type = "submit" id = "add-button" class = "add-cart-btn" 
+                        data-pid = "{{product.pid}}" data-title = "{{product.title}}" data-price = "{{product.price}}" data-image = "{{product.image.url}}">add to cart</button>
                     </div>
                     <div class = "product-info">
                         <h3 class = "product-brand">{{product.title}}</h3>
@@ -51,8 +52,9 @@
                     <div class="product-card">
                         <div class="product-image">
                             <img src = "{{product.image.url}}" class="product-thumb">
-                            <a class="view-btn" href="{% url 'product' pid=product.pid %}" >view</a>
-                            <button class = "add-cart-btn add-btn update-cart">add to cart</button>
+                            <a class="view-btn" href="{% url 'product' product.pid %}" >view</a>
+                            <button type = "submit" id = "add-button" class = "add-cart-btn" data-pid = "{{product.pid}}" data-title = "{{product.title}}" 
+                            data-price = "{{product.price}}" data-image="{{product.image.url}}">add to cart</button>
                         </div>
                         <div class = "product-info">
                             <h3 class = "product-brand">{{product.title}}</h3>
@@ -78,8 +80,9 @@
                         <div class="product-card">
                             <div class="product-image">
                                 <img src = "{{product.image.url}}" class="product-thumb">
-                                <a class="view-btn" href="{% url 'product' pid=product.pid %}" >view</a>
-                                <button class = "add-cart-btn add-btn update-cart">add to cart</button>
+                                <a class="view-btn" href="{% url 'product' product.pid %}" >view</a>
+                                <button type = "submit" id = "add-button" class = "add-cart-btn" data-pid = "{{product.pid}}" 
+                                data-title = "{{product.title}}" data-price = "{{product.price}}" data-image = "{{product.image.url}}">add to cart</button>
                             </div>
                             <div class = "product-info">
                                 <h3 class = "product-brand">{{product.title}}</h3>
