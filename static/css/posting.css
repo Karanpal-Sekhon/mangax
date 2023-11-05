@@ -1,0 +1,31 @@
+.product-form{
+    position: absolute;
+    top: 250px;
+  }
+  
+  .product-form textarea{
+    width: 400px;
+  }
+  
+  .product-form h1{
+    position: relative;
+    left: 0px;
+    padding-bottom: 20px;
+    color: black;
+  
+  }
+  
+  .right-column {
+    position: absolute;
+    top:  250px;
+    right: 0px;
+    height: 50%;
+    width: 50%;
+    /* background-color: lightgray; */
+  }
+  
+  
+  .right-column img{
+    height: 500px;
+    border-radius: 20px;
+  }

@@ -2,7 +2,7 @@
 {%load static %}
 <html>
 <head>
-    <title>MANGAXCHANGE</title>
+    <title>MangaXChange</title>
 
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900&display=swap" rel="stylesheet">
 
@@ -68,7 +68,13 @@
           <li><a href="{% url 'userauths:signup' %}"><strong>Sign Up</strong></a></li>
           {% endif %}
           <li><a href="{% url 'cart' %}"><img id="cart-icon" src="{% static 'images/cart.png' %}"></a></li>
-          <li><a href="#" class="btn btn-success">Post Ad</a></li>
+
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'posting' %}" class="btn btn-success">Add Posting</a></li>
+          {% else %}
+          <li><a href="{% url 'userauths:login' %}" class="btn btn-success">Add Posting</a></li>
+          {% endif %}
+
         </ul>
         <!-- <p id = "cart-total">{{cartItems}}</p> -->
       </nav>

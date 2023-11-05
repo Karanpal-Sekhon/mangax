@@ -9,6 +9,6 @@ urlpatterns = [
     path("login/", views.login_view, name = "login"),
     path("logout/", views.logout_view, name = "logout"),
     path("account/", views.account_view, name="account_view"),
-    path("wishlist/", views.wishlist_view, name="wishlist")
-    
+    path("wishlist/", views.wishlist_view, name="wishlist"),
+    path("mypostings", views.user_postings, name = "mypostings")
 ]

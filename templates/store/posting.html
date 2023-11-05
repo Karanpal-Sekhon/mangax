@@ -1,0 +1,40 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{%block content%}
+
+
+{% if user.is_authenticated %}
+
+<link rel = "stylesheet" type = "text/css" href="{% static 'css/posting.css' %}">
+
+<div class="right-column">
+    <img src = "{% static 'images/placeholder.png' %}">
+</div>
+
+<div class="product-form">
+    <h1 >Add Product</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="product_name" name="product-title" required><br><br>
+
+        <label for="product_category">Product Genre:</label>
+        <input type="text" id="product_name" name="product-category" required><br><br>
+
+        <label for="product_description">Product Description:</label><br>
+        <textarea id="product_description" name="product-description" rows="4" required></textarea><br><br>
+    
+        <label for="product_price">Product Price:</label>
+        <input type="number" id="product_price" name="product-price" required step = 0.01><br><br>
+    
+        <label for="product_image">Product Image:</label>
+        <input type="file" id="product_image" name="product-image" accept="image/*" required><br><br>
+    
+        <button type="submit">Add Product</button>
+    </form>
+</div>
+
+{%endif%}
+
+{%endblock content%}

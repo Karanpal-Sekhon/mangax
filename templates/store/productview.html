@@ -5,6 +5,7 @@
 
 <!-- Left Column / Headphones Image -->
 
+
 <link rel = "stylesheet" type = "text/css" href="{% static 'css/productview.css' %}">
 <div class="left-column">
     <img src = "{{product.image.url}}">
@@ -28,10 +29,15 @@
     <!-- Product Pricing -->
     <div class="product-price">
       <span class="current-product-price">{{product.price}}$</span>
-      <a href="#" class="cart-btn">Add to cart</a>
-      <a href="#" class="cart-btn", style="margin-left: 10px;">Add to Wishlist</a>
+      <button class="cart-btn add-cart"
+    data-pid="{{ product.id }}"
+    data-title="{{ product.title }}"
+    data-price="{{ product.price }}"
+    data-image="{{ product.image.url }}">Add to cart</button>
+      <button href="submit" class="cart-btn add-cart", style="margin-left: 10px;">Add to Wishlist</button>
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 {% endblock content %} 

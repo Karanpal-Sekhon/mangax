@@ -6,7 +6,8 @@
 <div class="row">
     <div class = "col-lg-6">
         <div class = "box-element">
-            <form id = "form">
+            <form id = "form", method = "POST">
+                {% csrf_token %}
                 <div id = "user-info">
                     <div class="form-field">
                         <input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -33,7 +34,7 @@
                         <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" name="country" placeholder="Zip code..">
+                        <input class="form-control" type="text" name="country" placeholder="Country...">
                     </div>
                 </div>
                 <hr>

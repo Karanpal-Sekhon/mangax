@@ -26,8 +26,8 @@
                 <div style="flex:2">Manga</div>
                 <div style="flex:2"><strong>Title</strong></div>
                 <div style="flex:1"><strong>Price</strong></div>
-                <div style="flex:1"><strong>Quantity</strong></div>
-                <div style="flex:1"><strong>Total</strong></div>
+                <!-- <div style="flex:1"><strong>Quantity</strong></div>
+                <div style="flex:1"><strong>Total</strong></div> -->
  
             </div>
             {% for pid, item in request.session.cart_data_obj.items %}
@@ -35,7 +35,7 @@
                 <div style="flex:2"><img class = "row-image" src = "{{item.image}}"></div>
                 <div style="flex:2">{{item.title}}</div>
                 <div style="flex:1">${{item.price}}</div>
-                <div style="flex:1">
+                <!-- <div style="flex:1">
                     <p class="quantity">{{item.quantity}}</p>
                     <div class="quantity">
                         <img data-product={{item.product.id}} data-action = "add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
@@ -43,7 +43,7 @@
                         <img data-product = {{item.product.id}} data-action = "remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
                     </div>
                 </div>
-                <div style="flex:1">{{item.get_total}}$</div>
+                <div style="flex:1">{{item.get_total}}$</div> -->
             </div>
             {% endfor %}
         </div>

@@ -4,10 +4,10 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.shortcuts import redirect
 from .models import User
-# from django.conf import settings
-# Create your views here.
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
-# User = settings.AUTH_USER_MODEL
+
 
 def signup(request):
 
@@ -77,6 +77,11 @@ def account_view(request):
         user.first_name = fullname.split()[0]
         user.last_name = fullname.split()[1]
         
+        # SET USER IMAGE
+        image = request.FILES.get("profile-image")
+        image_name = f"user_{user.id}_profile.jpg"
+        default_storage.save(image_name, ContentFile(image.read()))
+        user.image = image_name
 
         # SET USERNAME
         user_name = request.POST.get("username")
@@ -98,3 +103,16 @@ def wishlist_view(request):
 
     context = {}
     return render(request, "userauths\wishlist.html", context)
+
+
+def user_postings(request):
+
+    user = request.user
+
+    products = user.products.all()
+
+    context = {
+        "user": user,
+        "products": products
+    }
+    return render(request, 'userauths/mypostings.html', context)

@@ -1,11 +1,8 @@
-TODO:
-
-1. implement signup ui DONE
-2. create login logic and corresponding ui DONE
-3. create productview page DONE
-4. add user povs
-	a. account page DONE
-	b. add add posting ui
-	c. add add posting logic
-	d. add payment processing for ad deployment
-
+1. Finish email sending (talk to harinderpal about labeling)
+2. Add remove from cart functionality
+3. Add search mechanism for manga
+4. Add category Links
+5. revamp the ui (code)
+6. Add wishlist mechanism
+7. Slideshow for banner
+8. 

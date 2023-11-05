@@ -29,7 +29,7 @@ body {
 }
 
 .Searchbar input{
-    width: 52%;
+    width: 50%;
     height: 50px;  
     font-size: 15px;
     padding-left: 20px;
@@ -324,7 +324,6 @@ h2{
 
 
 .error{
-  margin-top: 20px;
   margin-bottom: -20px;
   color: #D8000C;
   background-color: #FFBABA;

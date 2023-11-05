@@ -1,4 +1,4 @@
-$(".add-cart-btn").on("click", function() {
+$(".add-cart").on("click", function() {
 
     // let productCard = $(this).closest(".product-card");
     let product_pid = $(this).data("pid");

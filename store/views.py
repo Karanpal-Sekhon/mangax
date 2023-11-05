@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from django.http import JsonResponse # returns message
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from .models import *
 from store.models import Product, CartOrder, CartOrderItems, Category, Address, WishList, ProductImages
 
@@ -23,13 +25,48 @@ def store(request):
 
 def product_detail(request, pid):
     product = Product.objects.get(pid = pid)
-    # product = get_object_or_404(Product, )
 
     context = {
         "product" : product
     }
 
     return render(request, "store/productview.html", context)
+
+
+def add_posting(request):
+
+    if request.method == "POST":
+        title = request.POST.get("product-title")
+        category = request.POST.get("product-category")
+
+        category = Category.objects.get(title = category)
+        description = request.POST.get("product-description")
+        price = request.POST.get("product-price")
+        image = request.FILES.get("product-image")
+
+
+        image_name = f"user_{request.user.id}/{image.name}"
+        default_storage.save(image_name, ContentFile(image.read()))
+
+        
+        product = Product(
+            title=title,
+            category = category,
+            description=description,
+            price=price,
+            image=image_name,
+            user=request.user  # Associate the product with the current user
+        )
+
+        product.save()
+
+
+        return redirect('product', pid = product.pid)
+
+
+    context = {}
+
+    return render(request, "store/posting.html/", context)
 
 
 
@@ -83,6 +120,19 @@ def cart(request):
     
 def checkout(request):
     price_total, item_total = get_cart_total(request)
+
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        address = request.POST.get("address")
+        city = request.POST.get("city")
+        state = request.POST.get("state")
+        zipcode = request.POST.get("zipcode")
+        country = request.POST.get("country")
+
+        return redirect("store")
+
 
     context = {
         "price_total": price_total,

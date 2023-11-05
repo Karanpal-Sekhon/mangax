@@ -25,34 +25,6 @@ class Category(models.Model):
 class Tags(models.Model):
     pass
     
-
-
-# class Vendor(models.Model):
-#     vid = ShortUUIDField(unique = True, length = 10, max_length = 20, prefix = "ven", alphabet = "abcdefgh12345")
-
-
-#     title = models.CharField(max_length=100, default="Vendor Title")
-#     image = models.ImageField(upload_to=user_directory_path, default= "vendor.jpg")
-#     description = models.TextField(null=True, blank=True, default="Vendor Description")
-
-
-
-#     address = models.CharField(max_length=100, default="123 Main Street")
-#     contact = models.CharField(max_length=100, default = "+123 (456) 789")
-    
-#     authentic_rating = models.CharField(max_length=100, default = "100")
-
-
-#     user = models.ForeignKey(User, on_delete = models.SET_NULL, null=True)
-
-#     class Meta:
-#         verbose_name_plural = "Vendors"
-
-#     def vendor_image(self):
-#         return mark_safe('<img src = "%s" width = "50" height = "50" />' % (self.image.url))
-    
-#     def __str__(self):
-#         return self.title
     
 
 
@@ -64,7 +36,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to=user_directory_path, default= "product.jpg")
     description = models.TextField(null=True, blank=True, default="Product Description")
 
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="products")
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
     price = models.DecimalField(max_digits=10, decimal_places=2, default="0.00")
@@ -148,120 +120,4 @@ class Address(models.Model):
 
     class Meta:
         verbose_name_plural = "Address"
-
-
-
-
-
- 
-# class Product(models.Model):
-#     pid = ShortUUIDField(unique = True, length = 10, max_length = 20, alphabet = "abcdefgh12345")
-#     user = models.ForeignKey(User, on_delete= models.CASCADE)
-#     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-#     name = models.CharField(max_length=200, null=True, default="Title")
-#     price = models.FloatField()
-#     digital = models.BooleanField(default=False, null = True, blank=False)
-#     image = models.ImageField(null=True, blank=True)
-#     description = models.TextField(max_length=1000, default="Product Description")
-#     tags = models.ForeignKey(Tags, on_delete=models.CASCADE)
-
-
-
-#     def __str__(self):
-#         return self.name
-
-
-#     @property
-#     def imageURL(self):
-#         try:
-#             url = self.image.url
-#         except:
-#             url = ""
-#         return url
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class Customer(models.Model):
-#     user = models.OneToOneField(User, on_delete = models.CASCADE, null=True, blank=True) # user can only have one customer, customer can only have one user
-#     name = models.CharField(max_length=200, null=True)
-#     email = models.CharField(max_length=200, null=True)
-    
-#     def __str__(self):
-#         return self.name
-
-# class Order(models.Model):
-
-#     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank = True, null = True)
-#     date_ordered = models.DateTimeField(auto_now_add=True)
-#     complete = models.BooleanField(default=False, null=True, blank=False)
-#     transaction_id = models.CharField(max_length=200, null=True)
-
-#     def __str__(self):
-#         return str(self.id)
-
-#     @property
-#     def get_cart_total(self):
-#         orderitems = self.orderitem_set.all()
-#         total = sum([item.get_total for item in orderitems])
-#         return total
-#     @property
-#     def get_cart_items(self):
-#         orderitems = self.orderitem_set.all()
-#         total = sum([item.quantity for item in orderitems])
-#         return total
-#     @property
-#     def shipping(self):
-#         shipping = False
-#         orderitems = self.orderitem_set.all()
-#         for i in orderitems:
-#             if i.product.digital == False:
-#                 shipping = True
-#             return shipping
-
-    
-
-
-# class OrderItem(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank = True, null = True)
-#     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank = True, null = True)
-#     quantity = models.IntegerField(default=0, null=True, blank=True)
-#     date_added = models.DateTimeField(auto_now_add=True)
-
-#     @property
-#     def get_total(self):
-#         total = self.product.price * self.quantity
-#         return total
-    
-# class ShippingAddress(models.Model):
-#     customer = models.ForeignKey(Customer, on_delete = models.SET_NULL, blank=True, null=True)
-#     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
-#     address = models.CharField(max_length=200, null=True)
-#     city = models.CharField(max_length=200, null=True)
-#     state = models.CharField(max_length=200, null=True)
-#     zip_code = models.CharField(max_length=200, null=True)
-#     date_added = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return self.address
-
-
-
-
-
-
 
