@@ -7,8 +7,6 @@ assignees: ''
 
 ---
 
-As a [type of user], I want [an action] so that [benefit/value].
-
 ### Acceptance Criteria
 
 1. **Given** [initial context], **when** [action is performed], **then** [expected outcome].
