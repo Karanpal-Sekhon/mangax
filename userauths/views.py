@@ -16,7 +16,7 @@ def signup(request):
         if form.is_valid():
             new_user = form.save()
             username = form.cleaned_data.get("username")
-            messages.success(request, f"Hey {username}, your account was created succesfully")
+            messages.success(request, f"Hey {username}, your account was created succesfully", extra_tags="signup")
             new_user = authenticate(username = form.cleaned_data['email'], password = form.cleaned_data["password1"])
             
             login(request, new_user)
@@ -61,8 +61,8 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, "You have been logged out.")
-    return redirect("userauths:signup")
+    messages.success(request, "You have been logged out.", extra_tags="logout")
+    return redirect("userauths:login")
 
 
 def account_view(request):
@@ -76,12 +76,6 @@ def account_view(request):
         fullname = request.POST.get("name")
         user.first_name = fullname.split()[0]
         user.last_name = fullname.split()[1]
-        
-        # SET USER IMAGE
-        image = request.FILES.get("profile-image")
-        image_name = f"user_{user.id}_profile.jpg"
-        default_storage.save(image_name, ContentFile(image.read()))
-        user.image = image_name
 
         # SET USERNAME
         user_name = request.POST.get("username")
@@ -93,16 +87,15 @@ def account_view(request):
 
         # SAVE USER CHANGES
         user.save()
-
-        messages.success(request, "User Successfully updated")
+        messages.success(request, "User Successfully updated", extra_tags="user_update")
 
     context = {}
     return render(request, 'userauths/account.html', context)
     
-def wishlist_view(request):
+# def wishlist_view(request):
 
-    context = {}
-    return render(request, "userauths\wishlist.html", context)
+#     context = {}
+#     return render(request, "userauths\wishlist.html", context)
 
 
 def user_postings(request):

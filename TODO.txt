@@ -1,13 +1,12 @@
-1. Finish email sending (talk to harinderpal about labeling)
+1. Finish email sending (talk to harinderpal about labeling) #
 2. Add remove from cart functionality
 3. Add search mechanism for manga
 4. Add category links functionality
-5. revamp the ui (code)
-6. Add wishlist mechanism
-7. Slideshow for banner (home page)
-8. Fix sign up form
-9. Add remember me functionality
-10. Add forget my password functionality
-11. add messages functionality
-12. account images glitches
-13. 
+5. revamp the ui (code) #
+6. Slideshow for banner (home page)
+	a. add news stuff from other sites
+	b. slideshow similar to steam
+
+7. Add remember me functionality
+8. Add forget my password functionality
+9. add messages functionality # DONE

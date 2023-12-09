@@ -37,6 +37,17 @@
         </div>
         <a class="forgot pull-right" href="#">Forgot Password?</a>
       </div>
+
+      <div style="margin-top: 10px; background-color: lightgreen">
+        {% if messages %}
+        {% for message in messages %}
+        {% if "logout" in message.tags%}
+        <strong>{{ message }}</strong>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+
     </form>
   </div>
   <div class="signup-wrapper text-center">

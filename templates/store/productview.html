@@ -11,8 +11,7 @@
     <img src = "{{product.image.url}}">
 </div>
  
- 
-  <!-- Right Column -->
+   <!-- Right Column -->
   <div class="right-column">
  
     <!-- Product Description -->
@@ -24,6 +23,13 @@
  
     <!-- Product Configuration -->
     <div class="product-configuration">
+      {% if messages %}
+      {% for message in messages %}
+      {% if "posting_update" in message.tags%}
+      <p>{{message}}</p>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
     </div>
  
     <!-- Product Pricing -->

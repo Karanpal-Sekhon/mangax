@@ -78,6 +78,15 @@
         </ul>
         <!-- <p id = "cart-total">{{cartItems}}</p> -->
       </nav>
+      <p>
+        {% if messages %}
+        {% for message in messages %}
+        {% if "signup" in message.tags%}
+        <strong>{{ message }}</strong>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </p>
     </div>
 
   </header>

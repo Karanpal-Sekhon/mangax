@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse # returns message
+from django.contrib import messages
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from .models import *
@@ -60,6 +61,8 @@ def add_posting(request):
 
         product.save()
 
+        
+        messages.success(request, "Your posting has been added!", extra_tags="posting_update")
 
         return redirect('product', pid = product.pid)
 
@@ -130,6 +133,9 @@ def checkout(request):
         state = request.POST.get("state")
         zipcode = request.POST.get("zipcode")
         country = request.POST.get("country")
+
+
+        print(name, email, address, city, state, zipcode, country)
 
         return redirect("store")
 
