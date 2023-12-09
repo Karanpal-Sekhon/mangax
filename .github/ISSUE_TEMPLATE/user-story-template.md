@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
+name: User Story Template
+about: template for user stories (basically app TODOs)
 title: ''
 labels: ''
 assignees: ''
