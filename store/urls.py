@@ -15,5 +15,8 @@ path('checkout/', views.checkout, name= 'checkout'),
 path('product/<pid>/', views.product_detail, name= 'product'),
 
 #posting
-path("posting/", views.add_posting, name = 'posting')
+path("posting/", views.add_posting, name = 'posting'),
+
+#deleting from the cart
+path('delete-from-cart', views.delete_from_cart, name='delete_from_cart')
 ]

@@ -147,4 +147,22 @@ def checkout(request):
 
     return render(request, 'store/checkout.html', context)
 
+def delete_from_cart(request):
+    if request.method == "POST":
+        product_id = request.POST.get("id")
+        
+        if 'cart_data_obj' in request.session:
+            cart_data = request.session['cart_data_obj']
+            
+            if product_id in cart_data:
+                del cart_data[product_id]
+                request.session['cart_data_obj'] = cart_data
+                return JsonResponse({"success": True})
+    
+    return JsonResponse({"success": False})
+
+
+
+
+
 
