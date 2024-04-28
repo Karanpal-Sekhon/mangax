@@ -5,7 +5,7 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from .models import *
 from store.models import Product, CartOrder, CartOrderItems, Category, Address, WishList, ProductImages
-
+from django.template.loader import render_to_string
 # Create your views here.
 
 def store(request):
@@ -83,9 +83,12 @@ def add_to_cart(request):
     }
 
     if 'cart_data_obj' in request.session:
-        cart_data = request.session['cart_data_obj']
-        cart_data.update(cart_product)
-        request.session['cart_data_obj'] = cart_data
+        if str(request.GET["pid"]) in request.session["cart_data_obj"]:
+            pass # do not add to the cart if product already in there, in future send message saying product already in cart
+        else:
+            cart_data = request.session['cart_data_obj']
+            cart_data.update(cart_product)
+            request.session['cart_data_obj'] = cart_data
 
     else:
         request.session['cart_data_obj'] = cart_product
@@ -147,19 +150,37 @@ def checkout(request):
 
     return render(request, 'store/checkout.html', context)
 
+
+def search_view(request):
+    query = request.GET["q"]
+
+    print(query)
+
+    products = Product.objects.filter(title__icontains = query, description__icontains = query).order_by("-date")
+    context = {
+        "products": products,
+        "query": query
+    }
+
+    return render(request, 'store/search.html', context)
+
+
+
 def delete_from_cart(request):
-    if request.method == "POST":
-        product_id = request.POST.get("id")
+    product_id = str(request.GET["id"])
+    if 'cart_data_obj' in request.session:
+        if product_id in request.session["cart_data_obj"]:
+            del request.session['cart_data_obj'][product_id]
+
+    cart_total_amount = 0
+    if 'cart_data_obj' in request.session:
+        for p_id, item in request.session['cart_data_obj'].items():
+            cart_total_amount += float(item['price'])
         
-        if 'cart_data_obj' in request.session:
-            cart_data = request.session['cart_data_obj']
-            
-            if product_id in cart_data:
-                del cart_data[product_id]
-                request.session['cart_data_obj'] = cart_data
-                return JsonResponse({"success": True})
-    
-    return JsonResponse({"success": False})
+    context = render_to_string("store/async/cart-list.html", {"cart_data":request.session['cart_data_obj'], "totalcartitems": len(request.session["cart_data_obj"]), 'cart_total_amount':cart_total_amount}) 
+    return JsonResponse({"data": context, "totalcartitems": len(request.session["cart_data_obj"])})
+
+
 
 
 

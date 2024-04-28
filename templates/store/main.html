@@ -33,8 +33,6 @@
         return cookieValue;
       }
       const csrftoken = getToken('csrftoken');
-
-
     </script>
 
 </head>
@@ -43,8 +41,9 @@
   <header class = "header">
     <a href = "{% url 'store' %}"><img class = "logo" src = "{% static  'images/navbarlogo.PNG' %}"></a>
     <div class="Searchbar">
-      <form>
-        <input type = "text" placeholder="Search Manga" name = "search" >
+      <form action = "{% url 'search' %}" method="GET">
+        <input type = "text" placeholder="Search Manga" name = "q" >
+        <button class="search-button" type="submit"><img id = "search-icon" src="{%static 'images/search.png' %}"></button>
       </form>
     </div>
     <div class = "navbar1">

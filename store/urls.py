@@ -11,6 +11,9 @@ path('add-to-cart/', views.add_to_cart, name = "add-to-cart"),
 path('checkout/', views.checkout, name= 'checkout'),
 
 
+#search
+path("search/", views.search_view, name = 'search'),
+
 #product view
 path('product/<pid>/', views.product_detail, name= 'product'),
 

@@ -64,7 +64,7 @@
 					<div style="flex:1"><p>${{item.price}}</p></div>
 				</div>
                 {%endfor%}
-				<h5>Items:   {{item_total}}</h5>
+				<h5 class = "cart-items-count">Items:   {{request.session.cart_data_obj|length}}</h5>
 				<h5>Total:   ${{price_total|floatformat:2}}</h5>
         </div>
     </div>
