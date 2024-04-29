@@ -33,7 +33,7 @@
             
             {% for product in products %}
             <div class="well search-result">
-                <a href="#">
+                <a href="{% url 'product' product.pid %}">
                     <img class="img-responsive" src = "{{product.image.url}}" alt="">
                     <div class="title">
                         <h3>{{product.title}}</h3>
@@ -42,9 +42,6 @@
                 </a>
             </div>
             {% endfor %}
-
-
-
         </div>
     </div>
 </div>
