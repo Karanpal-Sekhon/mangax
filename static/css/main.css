@@ -150,9 +150,9 @@ h1,h2,h3,h4,h5,h6{
     position: relative;
 }
 
+/* Slideshow Stuff */
+
 .container {
-    margin-top: 50px;
-    margin-right: 250px;
     width: 900px; /* Adjust this width to fit your design */
     overflow: hidden; /* Ensures the content does not overflow */
 }

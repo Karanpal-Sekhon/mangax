@@ -1,5 +1,0 @@
-Minor Pieces of functionality that need to be implemented
-
-
-1. Email sending 
-2. Category Links (1)
