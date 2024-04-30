@@ -148,4 +148,51 @@ h1,h2,h3,h4,h5,h6{
     box-shadow: none;
     border-radius: 0;
     position: relative;
-}                    
+}
+
+.container {
+    margin-top: 50px;
+    margin-right: 250px;
+    width: 900px; /* Adjust this width to fit your design */
+    overflow: hidden; /* Ensures the content does not overflow */
+}
+
+.wrapper {
+    display: flex; /* Aligns images in a row */
+    animation: slide 20s infinite linear; /* Smooth, infinite animation */
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0); /* Start at the first image */
+    }
+    25% {
+        transform: translateX(0); /* Stay on the first image */
+    }
+    30% {
+        transform: translateX(-100%); /* Slide to the second image */
+    }
+    55% {
+        transform: translateX(-100%); /* Stay on the second image */
+    }
+    60% {
+        transform: translateX(-200%); /* Slide to the third image */
+    }
+    85% {
+        transform: translateX(-200%); /* Stay on the third image */
+    }
+    100% {
+        transform: translateX(-300%); /* Slide to the fourth image */
+    }
+}
+
+#slideshow-img {
+    width: 150px; /* Adjusted width for images */
+    height: 210px; /* Adjusted height for images */
+    flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+#coming-soon-img{
+	width:900px;
+	height: 210px;
+}

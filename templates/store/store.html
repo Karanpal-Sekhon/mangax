@@ -5,10 +5,20 @@
 
 
     <div class = "promo">
-        <h1><strong>New Additions!</strong></h1>
-        <h2><strong>Arrivals for August</strong></h2>
-        <a  class="btn btn-light btn-lg" id="view-listing-link" href = "#"><strong>View Listings</strong></a>
-        <img class = "slideshow" src = "{% static  'images/newmanga.png' %}">
+        <h1><strong>Featured Items!</strong></h1>
+        <h2><strong>Featured items for March</strong></h2>
+        <!-- <a  class="btn btn-light btn-lg" id="view-listing-link" href = "#"><strong>View Listings</strong></a>
+        <img class = "slideshow" src = "{% static  'images/newmanga.png' %}"> -->
+        <div class = "container">
+            <div class = "wrapper">
+                {% for p in products%}
+                {% if p.featured %}
+                <img src = "{{p.image.url}}" id = "slideshow-img">
+                {% endif %}
+                {% endfor %}
+                <img src = "{% static 'images/comingsoon.jpg' %}" id = "coming-soon-img">
+            </div>
+        </div>
     </div>
 
 
