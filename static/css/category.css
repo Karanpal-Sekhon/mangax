@@ -1,0 +1,83 @@
+/* Basic styling for the overall product container */
+.product {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px; /* Ensure there's enough space for 4 columns */
+    margin: 0 auto; /* Center the container */
+    overflow: visible;
+    left: 100px;
+}
+
+/* Creating a grid layout for the product cards */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal-width columns */
+    gap: 20px; /* Space between product cards */
+    justify-items: start;
+    overflow: visible; /* Avoid hidden overflow */
+    justify-content: start;
+    align-items: start;
+}
+
+/* Styling for individual product cards */
+.product-card {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Smooth hover animation */
+    height: 500px; /* Consistent height for all cards */
+    box-sizing: border-box; /* To ensure padding doesn't affect layout */
+}
+
+/* Adding hover effect for product cards */
+.product-card:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Styling for the product image */
+.product-image {
+    position: relative; /* For positioning inside the card */
+}
+
+/* Ensuring the product image is responsive and properly contained */
+.product-thumb {
+    max-width: 100%; /* Responsive within its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Match the card's border radius */
+}
+
+/* Styling for the product information section */
+.product-info {
+    margin-top: 10px; /* Space between image and text */
+}
+
+/* Styling for the product brand/title */
+.product-brand {
+    font-size: 1.2em; /* Larger font for emphasis */
+    font-weight: bold; /* Bold for emphasis */
+    color: #333; /* Dark color for readability */
+}
+
+/* Styling for the product price */
+.price {
+    font-size: 1.1em; /* Slightly smaller than the title */
+    color: #777; /* Subtle color for distinction */
+}
+
+/* Responsive design: adjusting for smaller screens */
+@media (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 column for very small screens */
+        justify-content: center;
+    }
+}

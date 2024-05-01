@@ -3,16 +3,46 @@
 
 {% block content %}
 
+<link rel = "stylesheet" type = "text/css" href="{% static 'css/category.css' %}">
 
+<div class="product">
+    <div class="product-container">
+        {% if products|length >= 4 %}
+        {% for product in products %}
+        <div class="product-card">
+            <div class="product-image">
+                <img src = "{{product.image.url}}" class="product-thumb">
+                <a class="view-btn" href="{% url 'product' product.pid %}" >view</a>
+                <button type = "submit" id = "add-button" class = "add-cart-btn add-cart" 
+                data-pid = "{{product.pid}}" data-title = "{{product.title}}" data-price = "{{product.price}}" data-image = "{{product.image.url}}">add to cart</button>
+            </div>
+            <div class = "product-info">
+                <h3 class = "product-brand">{{product.title}}</h3>
+                <span class = "price">{{product.price}}$</span>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
 
+        {% if products|length < 4 %}
+        {% for product in products %}
+        <div class="product-card" style="position: relative; right: 350px;">
+            <div class="product-image">
+                <img src = "{{product.image.url}}" class="product-thumb">
+                <a class="view-btn" href="{% url 'product' product.pid %}" >view</a>
+                <button type = "submit" id = "add-button" class = "add-cart-btn add-cart" 
+                data-pid = "{{product.pid}}" data-title = "{{product.title}}" data-price = "{{product.price}}" data-image = "{{product.image.url}}">add to cart</button>
+            </div>
+            <div class = "product-info">
+                <h3 class = "product-brand">{{product.title}}</h3>
+                <span class = "price">{{product.price}}$</span>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
 
-
-
-{% for p in products %}
-{% if p.category.title == category_name %}
-<img src = {{p.image.url}}>
-{% endif %}
-{% endfor %} 
 
 
 {% endblock content%}
