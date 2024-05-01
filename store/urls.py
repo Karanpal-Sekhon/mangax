@@ -21,5 +21,10 @@ path('product/<pid>/', views.product_detail, name= 'product'),
 path("posting/", views.add_posting, name = 'posting'),
 
 #deleting from the cart
-path('delete-from-cart', views.delete_from_cart, name='delete_from_cart')
+path('delete-from-cart', views.delete_from_cart, name='delete_from_cart'),
+
+#categories
+path('category/<str:category_name>/', views.category_view, name='category_view')
 ]
+
+

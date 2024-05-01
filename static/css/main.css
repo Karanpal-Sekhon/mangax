@@ -152,7 +152,9 @@ h1,h2,h3,h4,h5,h6{
 
 /* Slideshow Stuff */
 
-.container {
+.slide-container {
+    margin-top: 50px;
+    margin-left: 800px;
     width: 900px; /* Adjust this width to fit your design */
     overflow: hidden; /* Ensures the content does not overflow */
 }

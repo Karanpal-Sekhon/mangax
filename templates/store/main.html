@@ -46,11 +46,16 @@
         <button class="search-button" type="submit"><img id = "search-icon" src="{%static 'images/search.png' %}"></button>
       </form>
     </div>
-    <div class = "navbar1">
+    <div class="navbar1">
       <nav>
         <ul>
           {% for c in categories %}
-          <li><a href = "#"><strong>{{c.title}}</strong></a></li>
+          <li>
+            <!-- Generate the URL for the category_view, passing the category's title -->
+            <a href="{% url 'category_view' category_name=c.title %}">
+              <strong>{{ c.title }}</strong>
+            </a>
+          </li>
           {% endfor %}
         </ul>
       </nav>

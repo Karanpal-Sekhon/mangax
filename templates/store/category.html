@@ -1,0 +1,18 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+
+{% for p in products %}
+{% if p.category.title == category_name %}
+<img src = {{p.image.url}}>
+{% endif %}
+{% endfor %} 
+
+
+{% endblock content%}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import JsonResponse # returns message
 from django.contrib import messages
 from django.core.files.storage import default_storage
@@ -112,9 +112,6 @@ def get_cart_total(request):
 
     
 def cart(request):
-
-
-    
     price_total, item_total = get_cart_total(request)
 
     context = {
@@ -163,6 +160,24 @@ def search_view(request):
     }
 
     return render(request, 'store/search.html', context)
+
+
+
+def category_view(request, category_name):
+    # Get the Category object by its title
+    category = get_object_or_404(Category, title=category_name)
+
+    # Get the products related to this category
+    products = Product.objects.filter(category=category)
+    categories = Category.objects.all()
+
+    context = {
+        'categories': categories,
+        'category_name': category.title,  # Use the Category's title to be consistent
+        'products': products
+    }
+
+    return render(request, 'store/category.html', context)
 
 
 
